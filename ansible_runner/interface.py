@@ -209,6 +209,6 @@ def run_async(**kwargs):
     :returns: A tuple containing a :py:class:`threading.Thread` object and a :py:class:`ansible_runner.runner.Runner` object
     '''
     r = init_runner(**kwargs)
-    runner_thread = threading.Thread(target=r.run)
+    runner_thread = threading.Thread(target=r.run, daemon=True)
     runner_thread.start()
     return runner_thread, r
